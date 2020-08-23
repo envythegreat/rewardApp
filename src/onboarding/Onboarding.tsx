@@ -12,13 +12,20 @@ export default function Onboarding() {
       <View style={styles.container}>
         <View style={styles.SliderContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>My HHHHHH</Text>
+            <Text style={styles.title}>Reward</Text>
           </View>
         </View>
       
       <View style={styles.footer}>
-        <View style={{...StyleSheet.absoluteFillObject, backgroundColor: 'red'}} />
-        <View style={{flex: 1, backgroundColor: 'snow', borderTopLeftRadius: 75}}></View>
+        <View style={{...StyleSheet.absoluteFillObject, backgroundColor: '#BEECC4'}} />
+        <View style={{flex: 1, backgroundColor: 'snow', borderTopLeftRadius: 75}}>
+          <View style={styles.footerContainer}>
+            <Text style={styles.Subtitle}>Find Your Game</Text>
+            <Text style={styles.description}>
+              Collect Point and withdraw fund to your favorite game
+            </Text>
+          </View>
+        </View>
       </View>
       </View>
     </>
@@ -32,7 +39,7 @@ const styles = StyleSheet.create({
     // width
   },
   SliderContainer:{
-    backgroundColor: 'red',
+    backgroundColor: '#BEECC4',
     height: TEXT_HEIGHT,
     borderBottomRightRadius: 75,
   },
@@ -56,5 +63,24 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     lineHeight: 80,
+    fontFamily: "RussoOn",
+    fontWeight: '100'
+  },
+  footerContainer:{
+    flex: 0.80,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  Subtitle:{
+    fontFamily: 'BalooTamma2',
+    fontSize: 30,
+    color: '#0C0D34'
+  },
+  description:{
+    fontFamily: 'BalooTamma2',
+    lineHeight: 24,
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#0C0D34'
   }
 });
