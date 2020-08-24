@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import { View, Text , StyleSheet, Dimensions, Image } from 'react-native'
-
+import { View , StyleSheet, Dimensions, Image } from 'react-native'
+import { Button, Text } from 'native-base';
 
 const {width, height} = Dimensions.get('window');
-const TEXT_HEIGHT = 0.66 * height;
+const TEXT_HEIGHT = 0.62 * height;
 interface IState {
 }
 interface IProps{
@@ -15,7 +15,7 @@ interface IProps{
   simple?: boolean;
   smallAvg?:boolean;
   doublAvg?:boolean;
-  gift?:boolean;
+  last?:boolean;
 }
 
 class Slider extends Component<IProps, IState> {
@@ -36,6 +36,16 @@ class Slider extends Component<IProps, IState> {
       rightShap = this.props.shapes ? {borderBottomRightRadius: 0} : { borderBottomLeftRadius: 0,}
     }
     let Images;
+    let button;
+    if(this.props.last) {
+      button = (
+        <>
+          <Button  rounded style={styles.button} onPress={() => alert('Bello')}>
+            <Text style={styles.label}>Let’s get started</Text>
+          </Button>
+        </>
+      )
+    }
     if(this.props.smallAvg){
       Images = (
         <>
@@ -68,6 +78,8 @@ class Slider extends Component<IProps, IState> {
             <View style={styles.footerContainer}>
               <Text style={styles.Subtitle}> {this.props.subTitle} </Text>
               <Text style={styles.description}> {this.props.description} </Text>
+              <View style={{height: 40}}></View>
+              {button}
             </View>
           </View>
         </View>
@@ -108,7 +120,7 @@ const styles = StyleSheet.create({
   footerContainer:{
     flex: 0.80,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   Subtitle:{
     fontFamily: 'BalooTamma2',
@@ -144,6 +156,18 @@ const styles = StyleSheet.create({
   bns:{
     height: '50%',
     width: '75%',
+  },
+  button:{
+    height: 50,
+    width: 245,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#2CB9B0',
+    marginLeft: 60
+  },
+  label: {
+    fontSize: 20,
+    color: '#FFFFFF'
   }
 })
 

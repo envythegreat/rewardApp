@@ -8,7 +8,7 @@ import Swiper from 'react-native-swiper'
 export default function Onboarding() {
   return (
     <>
-      <StatusBar hidden={true}/>
+      <StatusBar />
       <View style={styles.container}>
         <Swiper loop={false}>
           <Slider
@@ -29,9 +29,10 @@ export default function Onboarding() {
           />
           <Slider
             Title='Get Paid'
-            subTitle='Fast Delivery ' 
+            subTitle='Fast Delivery' 
             description="Get paid with a lot of ways , Games Coins , Paypal, Payonner" 
             direction
+            last
           />
         </Swiper>
       </View>
