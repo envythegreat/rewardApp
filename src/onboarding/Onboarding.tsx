@@ -16,13 +16,16 @@ export default function Onboarding() {
             subTitle='Find Your Game' 
             description="Collect Point and withdraw fund to your favorite game" 
             direction
+            shapes
+            smallAvg
           />
           <Slider
             Title='Watch Ads'
             subTitle='Hear it First, Get it First' 
             description="Watch Ads, View, Download Apps. Collect Point and Get paid" 
             direction={false}
-            shapes
+            doublAvg
+            simple
           />
           <Slider
             Title='Get Paid'

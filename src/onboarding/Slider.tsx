@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import { View, Text , StyleSheet, Dimensions } from 'react-native'
+import { View, Text , StyleSheet, Dimensions, Image } from 'react-native'
 
 
 const {width, height} = Dimensions.get('window');
-const TEXT_HEIGHT = 0.70 * height;
+const TEXT_HEIGHT = 0.66 * height;
 interface IState {
 }
 interface IProps{
@@ -12,6 +12,10 @@ interface IProps{
   description: string;
   direction?: boolean;
   shapes?: boolean;
+  simple?: boolean;
+  smallAvg?:boolean;
+  doublAvg?:boolean;
+  gift?:boolean;
 }
 
 class Slider extends Component<IProps, IState> {
@@ -26,18 +30,40 @@ class Slider extends Component<IProps, IState> {
       {translateX: this.props.direction ? width / 2-60 : -width / 2 +60 },
       {rotate: this.props.direction ? '-90deg': '90deg'}
     ]
-    const leftShap = this.props.shapes ? {borderTopLeftRadius: 75} : {borderTopRightRadius: 75};
-    const rightShap = this.props.shapes ? {borderBottomRightRadius: 75} : { borderBottomLeftRadius: 75,}
+    let leftShap, rightShap;
+    if(!this.props.simple) {
+      leftShap = this.props.shapes ? {borderTopLeftRadius: 75} : {borderTopRightRadius: 75};
+      rightShap = this.props.shapes ? {borderBottomRightRadius: 0} : { borderBottomLeftRadius: 0,}
+    }
+    let Images;
+    if(this.props.smallAvg){
+      Images = (
+        <>
+          <Image  source={require('../../assets/img/bns.png')}  style={styles.bns} />
+          <Image  source={require('../../assets/img/smallAvg.png')}  style={styles.smallAvg} />
+        </>
+      ) ;
+    }else if(this.props.doublAvg) {
+      Images = <Image  source={require('../../assets/img/doublAvg.png')}  style={styles.doublAvg} /> ;
+    }else {
+      Images = (
+        <>
+          <Image  source={require('../../assets/img/gift.png')}  style={styles.gift} />
+          <Image  source={require('../../assets/img/wisher.png')}  style={styles.wisher} />
+        </>
+      )
+    }  
     return(
       <>
         <View style={[styles.SliderContainer, rightShap]}>
           <View style={[styles.titleContainer, {transform}]}>
             <Text style={styles.title}>{this.props.Title}</Text>
           </View>
+          {Images}
         </View>
       
         <View style={styles.footer}>
-          <View style={{...StyleSheet.absoluteFillObject, backgroundColor: '#BEECC4'}} />
+          <View style={{...StyleSheet.absoluteFillObject, backgroundColor: 'white'}} />
           <View style={[styles.overlly, leftShap]}>
             <View style={styles.footerContainer}>
               <Text style={styles.Subtitle}> {this.props.subTitle} </Text>
@@ -53,26 +79,27 @@ class Slider extends Component<IProps, IState> {
 const styles = StyleSheet.create({
 
   SliderContainer:{
-    backgroundColor: '#BEECC4',
+    backgroundColor: 'white',
     height: TEXT_HEIGHT,
   },
   overlly: {
     flex: 1,
-    backgroundColor: 'snow',
+    backgroundColor: '#FFE4D9',
   },
   footer:{
     flex:1,
   },
   titleContainer: {
-    // backgroundColor: 'snow',
+    backgroundColor: '#BFEAF5',
     width,
     height: 100,
     justifyContent: 'center',
-    borderRadius: 50
+    borderRadius: 50,
+    zIndex: 0
   },
   title: {
-    fontSize: 70,
-    color: 'black',
+    fontSize: 64,
+    color: '#FFF',
     textAlign: 'center',
     lineHeight: 80,
     fontFamily: "RussoOn",
@@ -94,6 +121,29 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     color: '#0C0D34'
+  },
+  smallAvg: {
+    position: "absolute",
+    bottom: -5,
+    left: 65
+  },
+  doublAvg: {
+    position: "absolute",
+    bottom: 0,
+    right: 20
+  },
+  wisher: {
+    position: "absolute",
+    bottom: -2,
+    left: 90
+  },
+  gift:{
+    height: '50%',
+    width: '75%',
+  },
+  bns:{
+    height: '50%',
+    width: '75%',
   }
 })
 
