@@ -5,9 +5,10 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Routes } from './src/authentication/Routes';
+import Welcome from './src/authentication/Welcome'
 
-
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<Routes>();
 class App extends Component<{},any>{
 
   constructor(props:any) {
@@ -27,7 +28,6 @@ class App extends Component<{},any>{
     });
     this.setState({ loading: false });
   }
-
   render() {
     if (this.state.loading) {
       return (
@@ -41,6 +41,7 @@ class App extends Component<{},any>{
               headerShown: false
           }}>
             <Stack.Screen name="Onboarding" component={Onboarding} />
+            <Stack.Screen name="Welcome" component={Welcome} />
           </Stack.Navigator>
         </NavigationContainer>
       );

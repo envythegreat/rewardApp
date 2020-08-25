@@ -4,7 +4,7 @@ import Animated, { multiply } from 'react-native-reanimated';
 import Slide, {SLIDE_HEIGHT} from './Slide';
 import SubSlide from './SubSlide'
 import {useValue, onScrollEvent, interpolateColor} from 'react-native-redash';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 const {width} =  Dimensions.get('window');
 
 
@@ -39,7 +39,7 @@ const slides = [
 
 const Onboarding = () => {
   const scroll = useRef<Animated.ScrollView>(null);
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   const x = useValue(0);
   const onScroll =  onScrollEvent({x});
   const backgroundColor = interpolateColor(x, {
@@ -82,10 +82,10 @@ const Onboarding = () => {
                   
                   if(scroll.current){
                     if(index === slides.length -1) {
-                      alert('hhhhh')
+                      navigation.navigate('Welcome')
                     }else {
                       scroll.current
-                          .getNode()
+                          ?.getNode()
                           .scrollTo({x: width *(index + 1), animated: true})
                     }
                   }

@@ -7,17 +7,18 @@ interface SubSlideProps {
   description: string;
   last?: boolean;
   onPress: () => void;
+  welcome?:boolean;
 }
 
 
-const SubSlide = ({subTitle, description, last, onPress}: SubSlideProps) => {
+const SubSlide = ({subTitle, description, last, onPress, welcome}: SubSlideProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.subTitle}> {subTitle} </Text>
       <Text style={styles.description}> {description} </Text>
       <Button 
-        label={last ? "Let's get Started" : "Next"} 
-        variant={last ? "primary" : "default"}
+        label={last ? "Let's get Started" : welcome ? "Have an account? Login" : "Next"} 
+        variant={last ? "primary" : welcome ? "primary" : "default"}
         {... {onPress}}
       />
     </View>
