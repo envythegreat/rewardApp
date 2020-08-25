@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-// import Onboarding from './src/onboarding/Onboarding'
-import Onboarding from './src/onboarding2/Onboarding';
+import Onboarding from './src/onboarding/Onboarding';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
