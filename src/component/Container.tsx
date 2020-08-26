@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ContainerProps {
@@ -14,17 +14,19 @@ const height = width * aspectRatio
 const Container = ({children, footer}: ContainerProps) => {
   const insets = useSafeAreaInsets();
   return (
+    <>
+    <StatusBar barStyle="dark-content" />
     <View style={styles.container}>
       <View style={{backgroundColor: '#FFF'}}>
         <View style={styles.Topbox}>
           <Image 
-            source={require('../../assets/img/pattern.png')}
+            source={require('../../assets/img/smoke.jpg')}
             style={{width, height,borderBottomLeftRadius: 75}} />
         </View>
       </View>
       <View style={styles.centerBox}>
         <Image
-          source={require('../../assets/img/pattern.png')}
+          source={require('../../assets/img/smoke.jpg')}
           style={
             {
               width,
@@ -42,6 +44,7 @@ const Container = ({children, footer}: ContainerProps) => {
         <View  style={{height: insets.bottom}} />
       </View>
     </View>
+    </>
   );
 };
 
@@ -50,7 +53,7 @@ export default Container;
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor: "#0C0D34"
+    backgroundColor: "#000"
   },
   Topbox:{
     overflow: 'hidden',
@@ -66,10 +69,11 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 0,
     backgroundColor: '#FFF',
     flex:1,
+    alignItems: 'center',
   },
   footerContainer:{
     // height: 200,
-    backgroundColor: "#0C0D34",
+    backgroundColor: "#000",
     paddingTop: 20,
     alignItems: 'center',
   }
