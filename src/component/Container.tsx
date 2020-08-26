@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ContainerProps {
   children: ReactNode;
@@ -11,6 +12,7 @@ const aspectRatio = 750 / 1125
 const height = width * aspectRatio
 
 const Container = ({children, footer}: ContainerProps) => {
+  const insets = useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <View style={{backgroundColor: '#FFF'}}>
@@ -35,8 +37,9 @@ const Container = ({children, footer}: ContainerProps) => {
           {children}
         </View>
       </View>
-      <View style={styles.footerContainer}>
+      <View style={styles.footerContainer} >
         {footer}
+        <View  style={{height: insets.bottom}} />
       </View>
     </View>
   );
@@ -65,7 +68,9 @@ const styles = StyleSheet.create({
     flex:1,
   },
   footerContainer:{
-    height: 200,
-    backgroundColor: "#0C0D34"
+    // height: 200,
+    backgroundColor: "#0C0D34",
+    paddingTop: 20,
+    alignItems: 'center',
   }
 });

@@ -8,6 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Routes } from './src/authentication/Routes';
 import Welcome from './src/authentication/Welcome'
 import Login from './src/authentication/Login'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+
 
 const Stack = createStackNavigator<Routes>();
 class App extends Component<{},any>{
@@ -36,16 +39,18 @@ class App extends Component<{},any>{
       );
     } else {
       return (
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false
-          }}>
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-            <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="Login" component={Login} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false
+            }}>
+              <Stack.Screen name="Onboarding" component={Onboarding} />
+              <Stack.Screen name="Welcome" component={Welcome} />
+              <Stack.Screen name="Login" component={Login} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
       );
     }
   }
