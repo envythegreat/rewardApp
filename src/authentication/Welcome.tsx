@@ -3,10 +3,11 @@ import { View, StyleSheet} from 'react-native';
 import Slide, {SLIDE_HEIGHT} from '../onboarding/Slide';
 import SubSlide from '../onboarding/SubSlide';
 import Button from '../component/Button';
-// const {width} =  Dimensions.get('window');
+import { useNavigation } from '@react-navigation/native';
 
 
 const Welcome = () => {
+  const navigation =useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.slider}>
@@ -18,7 +19,7 @@ const Welcome = () => {
           <SubSlide 
             subTitle="Let’s get started" 
             description="Login to your account below or signup for an amazing experience"
-            onPress={() => {alert('hello')}}
+            onPress={() => navigation.navigate('Login')}
             welcome
           />
           <Button 

@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Routes } from './src/authentication/Routes';
 import Welcome from './src/authentication/Welcome'
+import Login from './src/authentication/Login'
 
 const Stack = createStackNavigator<Routes>();
 class App extends Component<{},any>{
@@ -42,6 +43,7 @@ class App extends Component<{},any>{
           }}>
             <Stack.Screen name="Onboarding" component={Onboarding} />
             <Stack.Screen name="Welcome" component={Welcome} />
+            <Stack.Screen name="Login" component={Login} />
           </Stack.Navigator>
         </NavigationContainer>
       );
