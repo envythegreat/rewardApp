@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import {Feather as Icon} from "@expo/vector-icons"
-import { RectButton } from 'react-native-gesture-handler';
+// import { RectButton } from 'react-native-gesture-handler';
 
 interface CheckBoxProps {
   label: string;
@@ -10,14 +10,14 @@ interface CheckBoxProps {
 const CheckBox = ({label}: CheckBoxProps) => {
   const [checked, setChecked] = useState(false)
   return (
-    <RectButton onPress={() => setChecked((c) => !c)} style={{justifyContent: 'center',}}>
+    <TouchableOpacity onPress={() => setChecked((c) => !c)} style={{justifyContent: 'center',}}>
       <View style={styles.container}>
         <View style={[styles.howknow,{backgroundColor: checked ? "#2CB9B0" : "#FFF",}]}>
           <Icon name="check" color="#FFF" />
         </View>
         <Text style={{fontFamily: 'OpenSans'}}>{label}</Text>
       </View>
-    </RectButton>
+    </TouchableOpacity>
   );
 };
 
