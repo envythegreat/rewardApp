@@ -5,7 +5,8 @@ export const regex = {
 }
 export const ValidateColors = {
   Valid: '#2CB9B0',
-  Invalid: '#FF0058'
+  Invalid: '#FF0058',
+  Default: '#8A8D90'
 }
 export function validate(data: string, ref: string) {
   switch(ref) {
@@ -24,4 +25,5 @@ export function validate(data: string, ref: string) {
       }
       break;
   }
+  return true
 }

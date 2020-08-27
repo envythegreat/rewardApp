@@ -21,7 +21,8 @@ const Login = (_props: LoginProps) => {
     <Container {...{footer}} >
       <Text style={styles.Title}>Welcome back</Text>
       <Text style={styles.subTitle}>Use your credentials below and login to your account</Text>
-      <TextInput iconName="mail" placeholder="Enter your Email"  data="alouani@gmail.com" refs="Email" />
+      <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
+      <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />
     </Container>
   );
 };
