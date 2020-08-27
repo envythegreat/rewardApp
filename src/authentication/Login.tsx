@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import Container from '../component/Container';
 import Button from '../component/Button';
 import TextInput from '../component/TextInput'
+import CheckBox from '../component/CheckBox'
+
 
 interface LoginProps {}
+const {width} = Dimensions.get('window')
+
 
 const Login = (_props: LoginProps) => {
   const footer = (
@@ -23,6 +27,21 @@ const Login = (_props: LoginProps) => {
       <Text style={styles.subTitle}>Use your credentials below and login to your account</Text>
       <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
       <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />
+      <View style={styles.bottomLogin}>
+          <View>
+            <CheckBox label="Remember me" />
+          </View>
+          <TouchableOpacity>
+            <Text style={{color: '#2CB9B0', }}>Forgot Password?</Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{alignItems:'center'}}>
+            <Button 
+              label="Log into your account"
+              variant="primary"
+              onPress={() => alert('bello')}
+            />
+          </View>
     </Container>
   );
 };
@@ -44,6 +63,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'rgba(12, 13, 52, 0.5)',
     fontFamily: 'OpenSans',
-    marginBottom: 30
+    marginBottom: 18
+  },
+  bottomLogin:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: width * 0.8,
+    justifyContent: 'space-between',
+    marginVertical: 20
   }
 });
