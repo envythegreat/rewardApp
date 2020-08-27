@@ -9,8 +9,8 @@ import { Routes } from './src/authentication/Routes';
 import Welcome from './src/authentication/Welcome'
 import Login from './src/authentication/Login'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-
+import Register from './src/authentication/Register'
+import ForgotPassword from './src/authentication/ForgotPassword'
 
 const Stack = createStackNavigator<Routes>();
 class App extends Component<{},any>{
@@ -48,6 +48,8 @@ class App extends Component<{},any>{
               <Stack.Screen name="Onboarding" component={Onboarding} />
               <Stack.Screen name="Welcome" component={Welcome} />
               <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaProvider>
