@@ -5,20 +5,23 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 interface ContainerProps {
   children: ReactNode;
   footer: ReactNode;
+  position?: boolean;
 }
 
 const {width} = Dimensions.get('window')
 const aspectRatio = 750 / 1125
 const height = width * aspectRatio
 
-const Container = ({children, footer}: ContainerProps) => {
+const Container = ({children, footer, position}: ContainerProps) => {
+  const bottomBorderData = position ? {borderBottomLeftRadius: 75} :  {borderBottomRightRadius: 75};
+  const topBorderData = position ? {borderTopLeftRadius: 0} : {borderTopRightRadius: 0}
   const insets = useSafeAreaInsets();
   return (
     <>
     <StatusBar barStyle="dark-content" />
     <View style={styles.container}>
       <View style={{backgroundColor: '#FFF'}}>
-        <View style={styles.Topbox}>
+        <View style={[styles.Topbox, bottomBorderData]}>
           <Image 
             source={require('../../assets/img/smoke.jpg')}
             style={{width, height,borderBottomLeftRadius: 75}} />
@@ -35,7 +38,7 @@ const Container = ({children, footer}: ContainerProps) => {
               top:-height * 0.61,
             }}
         />
-        <View style={styles.boxOverllay}>
+        <View style={[styles.boxOverllay, topBorderData]}>
           {children}
         </View>
       </View>
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
   Topbox:{
     overflow: 'hidden',
     height: height * 0.61,
-    borderBottomLeftRadius: 75,
   },
   centerBox: {
     flex: 1,
@@ -66,7 +68,6 @@ const styles = StyleSheet.create({
   },
   boxOverllay:{
     borderRadius: 75,
-    borderTopLeftRadius: 0,
     backgroundColor: '#FFF',
     flex:1,
     alignItems: 'center',

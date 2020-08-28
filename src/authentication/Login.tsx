@@ -5,7 +5,7 @@ import Button from '../component/Button';
 import TextInput from '../component/TextInput'
 import CheckBox from '../component/CheckBox'
 import ContainerFooter from '../component/ContainerFooter'
-import HeaderAuth from '../component/headerauth'
+import HeaderAuth from '../component/HeaderAuth'
 import { useNavigation } from '@react-navigation/native';
 
 interface LoginProps {}
@@ -15,7 +15,7 @@ const {width} = Dimensions.get('window')
 const Login = (_props: LoginProps) => {
   const navigation =useNavigation();
   return (
-    <Container footer={<ContainerFooter label="Don’t have an account?" btn=" Sign Up here" naviga="Register" />} >
+    <Container footer={<ContainerFooter label="Don’t have an account?" btn=" Sign Up here" naviga="Register" />} position>
       <HeaderAuth title="Welcome back" subTitle="Use your credentials below and login to your account" />
       <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
       <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />

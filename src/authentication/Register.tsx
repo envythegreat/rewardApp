@@ -1,18 +1,32 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-
+import { View, StyleSheet } from 'react-native';
+import Container from '../component/Container'
+import ContainerFooter from '../component/ContainerFooter'
+import HeaderAuth from '../component/HeaderAuth'
+import TextInput from '../component/TextInput';
+import Button from '../component/Button';
 interface RegisterProps {}
 
 const Register = (_props: RegisterProps) => {
   return (
-    <View style={styles.container}>
-      <Text>Register</Text>
-    </View>
+    <Container footer={<ContainerFooter label="Already have an account?" btn=" Login here" naviga="Login" />}>
+      <HeaderAuth  title="Create account" subTitle="Let’s us know what your name, email, and your password" />
+      <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
+      <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />
+      <TextInput iconName="lock" placeholder="Confirm password" refs="Password" keyboardType="default" textEntry={true} />
+      <View style={styles.btn}>
+        <Button 
+          label="Create your account"
+          variant="primary"
+          onPress={() => alert('bello')}
+        />
+      </View>
+    </Container>
   );
 };
 
 export default Register;
 
 const styles = StyleSheet.create({
-  container: {}
+  btn:{alignItems:'center', marginVertical: 30}
 });

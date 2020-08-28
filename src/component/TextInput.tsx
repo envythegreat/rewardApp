@@ -49,6 +49,7 @@ class TextInput extends Component<TextInputProps, TextInputState>{
           value={this.state.inputValue}
           onChange={this.handleChange}
           {...{keyboardType}}
+          onBlur={this.handleChange}
           secureTextEntry={textEntry}
         />
         {
