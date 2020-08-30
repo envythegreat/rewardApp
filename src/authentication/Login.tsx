@@ -17,23 +17,21 @@ const Login = (_props: LoginProps) => {
   return (
     <Container footer={<ContainerFooter label="Don’t have an account?" btn=" Sign Up here" naviga="Register" />} position>
       <HeaderAuth title="Welcome back" subTitle="Use your credentials below and login to your account" />
-      <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
-      <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />
-      <View style={styles.bottomLogin}>
-          <View>
-            <CheckBox label="Remember me" />
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-            <Text style={{color: '#2CB9B0', }}>Forgot Password?</Text>
-          </TouchableOpacity>
+      <View style={{justifyContent: 'center', alignItems: 'center', overflow: 'hidden'}}>
+        <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" />
+        <TextInput iconName="lock" placeholder="Enter your password" refs="Password" keyboardType="default" textEntry={true} />
+        <View style={styles.bottomLogin}>
+            <View>
+              <CheckBox label="Remember me" />
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+              <Text style={{color: '#2CB9B0', }}>Forgot Password?</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={{alignItems:'center'}}>
+          <Button label="Log into your account" variant="primary" onPress={() => alert('bello')} />
+        </View>
       </View>
-      <View style={{alignItems:'center'}}>
-            <Button 
-              label="Log into your account"
-              variant="primary"
-              onPress={() => alert('bello')}
-            />
-          </View>
     </Container>
   );
 };

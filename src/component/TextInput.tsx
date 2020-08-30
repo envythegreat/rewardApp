@@ -13,8 +13,8 @@ interface TextInputProps {
   textEntry?: boolean
 }
 interface TextInputState {
-  inputValue: string,
-  checkOrX: true | false | null
+  inputValue: string;
+  checkOrX: true | false | null;
 }
 
 

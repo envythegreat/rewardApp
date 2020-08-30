@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, Image, Dimensions, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 interface ContainerProps {
   children: ReactNode;
@@ -38,8 +39,11 @@ const Container = ({children, footer, position}: ContainerProps) => {
               top:-height * 0.61,
             }}
         />
+        
         <View style={[styles.boxOverllay, topBorderData]}>
-          {children}
+          <KeyboardAwareScrollView>
+            {children}
+          </KeyboardAwareScrollView>
         </View>
       </View>
       <View style={styles.footerContainer} >
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     backgroundColor: '#FFF',
     flex:1,
-    alignItems: 'center',
+    overflow: 'hidden'
   },
   footerContainer:{
     // height: 200,
