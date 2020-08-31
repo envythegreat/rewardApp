@@ -11,7 +11,8 @@ interface ContainerProps {
 
 const {width} = Dimensions.get('window')
 const aspectRatio = 750 / 1125
-const height = width * aspectRatio
+const wheight = width * aspectRatio
+const {height} = Dimensions.get('window')
 
 const Container = ({children, footer, position}: ContainerProps) => {
   const bottomBorderData = position ? {borderBottomLeftRadius: 75} :  {borderBottomRightRadius: 75};
@@ -19,13 +20,14 @@ const Container = ({children, footer, position}: ContainerProps) => {
   const insets = useSafeAreaInsets();
   return (
     <>
+    <KeyboardAwareScrollView>
     <StatusBar barStyle="dark-content" />
-    <View style={styles.container}>
+    <View style={[styles.container, {height}]}>
       <View style={{backgroundColor: '#FFF'}}>
         <View style={[styles.Topbox, bottomBorderData]}>
           <Image 
             source={require('../../assets/img/smoke.jpg')}
-            style={{width, height,borderBottomLeftRadius: 75}} />
+            style={{width, height: wheight,borderBottomLeftRadius: 75}} />
         </View>
       </View>
       <View style={styles.centerBox}>
@@ -34,16 +36,15 @@ const Container = ({children, footer, position}: ContainerProps) => {
           style={
             {
               width,
-              height,
+              height:wheight,
               ...StyleSheet.absoluteFillObject,
-              top:-height * 0.61,
+              top:-wheight * 0.61,
             }}
         />
         
         <View style={[styles.boxOverllay, topBorderData]}>
-          <KeyboardAwareScrollView>
+          
             {children}
-          </KeyboardAwareScrollView>
         </View>
       </View>
       <View style={styles.footerContainer} >
@@ -51,6 +52,7 @@ const Container = ({children, footer, position}: ContainerProps) => {
         <View  style={{height: insets.bottom}} />
       </View>
     </View>
+    </KeyboardAwareScrollView>
     </>
   );
 };
@@ -59,12 +61,12 @@ export default Container;
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    // flex:1,
     backgroundColor: "#000"
   },
   Topbox:{
     overflow: 'hidden',
-    height: height * 0.61,
+    height: wheight * 0.61,
   },
   centerBox: {
     flex: 1,
