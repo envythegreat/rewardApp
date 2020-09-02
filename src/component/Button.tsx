@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     height: 50,
     width: 245,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   label:{
     fontSize: 15,

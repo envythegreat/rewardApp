@@ -20,9 +20,9 @@ const Container = ({children, footer, position}: ContainerProps) => {
   const insets = useSafeAreaInsets();
   return (
     <>
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView scrollEnabled={false}>
     <StatusBar barStyle="dark-content" />
-    <View style={[styles.container, {height}]}>
+    <View style={[styles.container, {height}]}>             
       <View style={{backgroundColor: '#FFF'}}>
         <View style={[styles.Topbox, bottomBorderData]}>
           <Image 

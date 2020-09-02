@@ -12,7 +12,7 @@ const ContainerFooter = ({label, btn, naviga}: FooterProps) => {
   const navigation =useNavigation();
   return (
     <Button variant="transparent" onPress={() => navigation.navigate(naviga)} >
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row',alignItems: 'center'}}>
         <Text style={{color: '#FFF'}}>{label}</Text>
         <Text style={{color: '#2CB9B0'}}>{btn}</Text>
       </View>
