@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, StyleSheet, View, Linking, Image } from 'react-native';
+import { Text, StyleSheet, View, Linking, _Image } from 'react-native';
 import Container from '../component/Container';
 import ContainerFooter from '../component/ContainerFooter'
 import HeaderAuth from '../component/HeaderAuth';

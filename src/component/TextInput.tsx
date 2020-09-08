@@ -5,12 +5,13 @@ import {validate, ValidateColors} from '../config/functions'
 
 const {width} = Dimensions.get('window')
 
-interface TextInputProps {
+export interface TextInputProps {
   placeholder: string;
   iconName: string;
   refs: string;
   keyboardType: "default" | "number-pad" | "decimal-pad" | "numeric" | "email-address" | "phone-pad";
-  textEntry?: boolean
+  textEntry?: boolean;
+  handleState: (e:string, ref:string) => void
 }
 interface TextInputState {
   inputValue: string;
@@ -33,6 +34,7 @@ class TextInput extends Component<TextInputProps, TextInputState>{
       inputValue: e.nativeEvent.text,
       checkOrX: myValue
     })
+    this.props.handleState(this.state.inputValue, this.props.refs)
   }
   render() {
     const {iconName , placeholder, keyboardType, textEntry} = this.props;
@@ -49,7 +51,7 @@ class TextInput extends Component<TextInputProps, TextInputState>{
           value={this.state.inputValue}
           onChange={this.handleChange}
           {...{keyboardType}}
-          onBlur={this.handleChange}
+          onBlur={() => this.handleChange}
           secureTextEntry={textEntry}
         />
         {

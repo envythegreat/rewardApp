@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, StyleProp, ViewStyle, View } from 'react-native';
 
 interface headerAuthProps {
-  title:string;
-  subTitle: string
+  title?:string;
+  subTitle?: string
+  labelStyle?: StyleProp<ViewStyle>;
 }
 
 const HeaderAuth = ({title,subTitle}: headerAuthProps) => {
   return (
     <>
-      <Text style={styles.Title}>{title}</Text>
-      <Text style={styles.subTitle}>{subTitle}</Text>
+      <View>
+        {title? <Text style={styles.Title}>{title}</Text> : null}
+        {subTitle ? <Text style={styles.subTitle}>{subTitle}</Text> : null}
+      </View>
     </>
   );
 };

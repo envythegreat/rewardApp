@@ -25,7 +25,7 @@ const Welcome = () => {
           <Button 
             label="Join us, it’s Free"
             variant="default"
-            onPress={() => alert('hello')}
+            onPress={() => navigation.navigate('Register')}
           />
         </View>
       </View>
