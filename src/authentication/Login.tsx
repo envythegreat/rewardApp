@@ -6,15 +6,19 @@ import TextInput from '../component/TextInput'
 import CheckBox from '../component/CheckBox'
 import ContainerFooter from '../component/ContainerFooter'
 import HeaderAuth from '../component/HeaderAuth'
-import {withNavigation} from '@react-navigation/compat';
+import { StackScreenProps } from '@react-navigation/stack';
+import { Routes } from './Routes';
+// import {withNavigation} from '@react-navigation/compat';
 
-interface LoginProps {}
+interface LoginProps {
+  Props : StackScreenProps<Routes, 'Login'>
+}
 interface LoginState {
   Email: string;
   Password: string;
 }
 const {width} = Dimensions.get('window')
-
+// type Props = StackScreenProps<Routes, 'Login'>
 
 class Login extends Component<LoginProps, LoginState>{
 
@@ -61,8 +65,7 @@ class Login extends Component<LoginProps, LoginState>{
     );
   }
 }
-// @ts-ignore
-export default withNavigation(Login);
+export default Login;
 
 const styles = StyleSheet.create({
 
