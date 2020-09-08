@@ -10,7 +10,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 interface ForgotPasswordProps {}
 
 const footer  = (
-  <View style={{marginLeft: 100}}>
+  <View style={{}}>
     <ContainerFooter label="Back To login ?" btn=" Login here" naviga="Login" />
   </View>
 )
