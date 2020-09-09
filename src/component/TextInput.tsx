@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, TextInput as Input, Dimensions, TextInputChangeEventData, NativeSyntheticEvent } from 'react-native';
 import {Feather as Icon} from "@expo/vector-icons"
 import {validate, ValidateColors} from '../config/functions'
-
+import { TextInputMask } from 'react-native-masked-text'
 const {width} = Dimensions.get('window')
 
 export interface TextInputProps {
@@ -11,7 +11,8 @@ export interface TextInputProps {
   refs: string;
   keyboardType: "default" | "number-pad" | "decimal-pad" | "numeric" | "email-address" | "phone-pad";
   textEntry?: boolean;
-  handleState: (e:string, ref:string) => void
+  handleState: (e:string, ref:string) => void;
+  isDate?: boolean;
 }
 interface TextInputState {
   inputValue: string;
@@ -37,14 +38,18 @@ class TextInput extends Component<TextInputProps, TextInputState>{
     this.props.handleState(this.state.inputValue, this.props.refs)
   }
   render() {
-    const {iconName , placeholder, keyboardType, textEntry} = this.props;
+    const {iconName , placeholder, keyboardType, textEntry, isDate} = this.props;
     const  colors = this.state.checkOrX === null ? ValidateColors.Default : this.state.checkOrX ? ValidateColors.Valid : ValidateColors.Invalid
     return (
       <View style={[styles.container, {borderColor: colors}]}>
         <View style={{padding: 5,paddingLeft: 13}}>
           <Icon name={iconName}  style={styles.iconSy} size={18} color={colors} />
         </View>
-        <Input 
+        {isDate ?<TextInputMask
+          type={'datetime'}
+          options={{
+            format: 'DD/MM/YYYY'
+          }}
           underlineColorAndroid="transparent"
           placeholder={placeholder}
           style={{flex:1,height:35}}
@@ -53,7 +58,17 @@ class TextInput extends Component<TextInputProps, TextInputState>{
           {...{keyboardType}}
           onBlur={() => this.handleChange}
           secureTextEntry={textEntry}
-        />
+          returnKeyType="done"
+        /> : <Input 
+          underlineColorAndroid="transparent"
+          placeholder={placeholder}
+          style={{flex:1,height:35}}
+          value={this.state.inputValue}
+          onChange={this.handleChange}
+          {...{keyboardType}}
+          onBlur={() => this.handleChange}
+          secureTextEntry={textEntry}
+        />}
         {
           this.state.checkOrX === null
             ? null

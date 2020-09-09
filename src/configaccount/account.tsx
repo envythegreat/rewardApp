@@ -29,6 +29,13 @@ class Account extends Component<AccountProps, AccountState>{
     }
   }
   handleState = (e: string, ref:string) => {
+    if(ref === 'Birthday') {
+      let newDate = new Date(e)
+      this.setState({
+        Birthday: newDate,
+      })
+    }
+    console.log(e)
     // @ts-ignore
     this.setState({
       [ref]: e,
@@ -37,7 +44,7 @@ class Account extends Component<AccountProps, AccountState>{
 
   Footer = () => {
     return (
-        <TouchableOpacity style={styles.trchOpacity} onPress={() => alert(this.state.Username+" "+this.state.FullName +" "+this.state.Address)}>
+        <TouchableOpacity style={styles.trchOpacity} onPress={() => alert(this.state.Username)}>
           <Text style={{textAlign: 'center', color:'#FFFFFF',lineHeight: 50}}>Press To continue</Text>
           <Image source={require('../../assets/img/icon-swipe.png')} style={styles.Imgbtn} />
           {/* <Icon name="chevron-right" /> */}
@@ -53,7 +60,7 @@ class Account extends Component<AccountProps, AccountState>{
         <View style={{justifyContent: 'center', alignItems: 'center', overflow: 'hidden'}}>
           <TextInput iconName="at-sign" placeholder="Username *" refs="Username" keyboardType="default" handleState={this.handleState} />
           <TextInput iconName="user" placeholder="Full Name *" refs="FullName" keyboardType="default"  handleState={this.handleState}/>
-          <TextInput iconName="calendar" placeholder="Birthday *" refs="Birthday" keyboardType="default" handleState={this.handleState}/>
+          <TextInput iconName="calendar" placeholder="Birthday format (DD/MM/YYYY) *" refs="Birthday" keyboardType="number-pad" handleState={this.handleState} isDate/>
           <TextInput iconName="map-pin" placeholder="Street Address *" refs="Address" keyboardType="default" handleState={this.handleState}/>
         </View>
       </Container>
