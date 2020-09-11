@@ -4,7 +4,7 @@ import {Feather as Icon} from "@expo/vector-icons"
 import {validate, ValidateColors} from '../config/functions'
 import { TextInputMask } from 'react-native-masked-text'
 const {width} = Dimensions.get('window')
-
+import { Text } from 'react-native-elements';
 export interface TextInputProps {
   placeholder: string;
   iconName: string;
@@ -16,7 +16,8 @@ export interface TextInputProps {
 }
 interface TextInputState {
   inputValue: string;
-  checkOrX: true | false | null;
+  checkOrX: boolean | null;
+  isError: boolean | string | null;
 }
 
 
@@ -25,26 +26,40 @@ class TextInput extends Component<TextInputProps, TextInputState>{
     super(props);
     this.state = {
       inputValue: '',
-      checkOrX: null
+      checkOrX: null,
+      isError: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
-  handleChange(e: NativeSyntheticEvent<TextInputChangeEventData>) {
-    const myValue = validate(this.state.inputValue, this.props.refs);
-    this.setState({
+  async handleChange(e: NativeSyntheticEvent<TextInputChangeEventData>) {
+    let myValue = validate(this.state.inputValue, this.props.refs);
+    await this.setState({
       inputValue: e.nativeEvent.text,
-      checkOrX: myValue
+    },()=> {
+      myValue = validate(this.state.inputValue, this.props.refs)
+      // console.log(myValue)
+      this.props.handleState(this.state.inputValue, this.props.refs)
+      this.setState({
+        // @ts-ignore
+        checkOrX: myValue.isValid,
+        // @ts-ignore
+        isError: myValue.error
+      })
     })
-    this.props.handleState(this.state.inputValue, this.props.refs)
+      console.log(this.state.isError)
+      console.log(this.state.checkOrX)
+    
   }
   render() {
     const {iconName , placeholder, keyboardType, textEntry, isDate} = this.props;
     const  colors = this.state.checkOrX === null ? ValidateColors.Default : this.state.checkOrX ? ValidateColors.Valid : ValidateColors.Invalid
     return (
+      <>
       <View style={[styles.container, {borderColor: colors}]}>
         <View style={{padding: 5,paddingLeft: 13}}>
           <Icon name={iconName}  style={styles.iconSy} size={18} color={colors} />
         </View>
+        
         {isDate ?<TextInputMask
           type={'datetime'}
           options={{
@@ -56,9 +71,9 @@ class TextInput extends Component<TextInputProps, TextInputState>{
           value={this.state.inputValue}
           onChange={this.handleChange}
           {...{keyboardType}}
-          onBlur={() => this.handleChange}
+          onBlur={() => {this.handleChange}}
           secureTextEntry={textEntry}
-          returnKeyType="done"
+          returnKeyType={'done'}
         /> : <Input 
           underlineColorAndroid="transparent"
           placeholder={placeholder}
@@ -84,6 +99,8 @@ class TextInput extends Component<TextInputProps, TextInputState>{
             )
         }
       </View>
+      {this.state.isError ? <View style={styles.myerr}><Text style={styles.errorTxt}>{this.state.isError}</Text></View> : null}
+      </>
     );
   }
 }
@@ -103,7 +120,16 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     borderRadius: 5,
     marginVertical: 20,
-    marginBottom: 5
+    marginBottom: 2
   },
-  iconSy:{ }
+  iconSy:{ },
+  errorTxt:{
+    fontSize:10,
+    color: 'red',
+  },
+  myerr:{
+    textAlign: 'center',
+    justifyContent: 'center',
+    marginHorizontal:40
+  }
 });

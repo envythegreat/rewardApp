@@ -35,7 +35,7 @@ class Account extends Component<AccountProps, AccountState>{
         Birthday: newDate,
       })
     }
-    console.log(e)
+    // console.log(e)
     // @ts-ignore
     this.setState({
       [ref]: e,
@@ -44,7 +44,7 @@ class Account extends Component<AccountProps, AccountState>{
 
   Footer = () => {
     return (
-        <TouchableOpacity style={styles.trchOpacity} onPress={() => alert(this.state.Username)}>
+        <TouchableOpacity style={styles.trchOpacity} onPress={() => alert(this.state.Birthday)}>
           <Text style={{textAlign: 'center', color:'#FFFFFF',lineHeight: 50}}>Press To continue</Text>
           <Image source={require('../../assets/img/icon-swipe.png')} style={styles.Imgbtn} />
           {/* <Icon name="chevron-right" /> */}
