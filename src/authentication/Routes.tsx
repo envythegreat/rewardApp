@@ -5,4 +5,5 @@ export type Routes = {
   Register: {} | undefined,
   ForgotPassword: {} | undefined,
   Account: {} | undefined,
+  Home: {} | undefined,
 }
