@@ -6,4 +6,10 @@ export type Routes = {
   ForgotPassword: {} | undefined,
   Account: {} | undefined,
   Home: {} | undefined,
+  FlashyStyledScreen: {} | undefined,
 }
+export type MainTabsParams = {
+  Home: {} | undefined;
+  Settings: {} | undefined;
+  Tabbar: {} | undefined;
+};

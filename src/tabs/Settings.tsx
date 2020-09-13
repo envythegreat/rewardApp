@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-interface TabbarProps {}
+interface SettingsProps {}
 
-const Tabbar = (_props: TabbarProps) => {
+const Settings = (_props: SettingsProps) => {
   return (
     <View style={styles.container}>
-      <Text>Tabbar</Text>
+      <Text>Settings</Text>
     </View>
   );
 };
 
-export default Tabbar;
+export default Settings;
 
 const styles = StyleSheet.create({
   container: {}

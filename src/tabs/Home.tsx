@@ -1,18 +1,20 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import * as React from 'react';
+import { View, StyleSheet } from 'react-native';
+import HeaderAuth from '../component/HeaderAuth';
 
-import Tabbar from "./Tabbar";
+interface HomeProps {}
+
+const Home = (_props: HomeProps) => {
+  return (
+    <View>
+      <HeaderAuth title="Account Configuration"/>
+      <HeaderAuth subTitle="Please Enter The Required Data (*)" />
+    </View>
+  );
+};
+
+export default Home;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#7DE3B6",
-    justifyContent: "flex-end",
-  },
+  container: {}
 });
-
-export default () => (
-  <View style={styles.container}>
-    <Tabbar />
-  </View>
-);
