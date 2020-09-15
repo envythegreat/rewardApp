@@ -60,7 +60,7 @@ class Account extends Component<AccountProps, AccountState>{
 
   render(){
     return (
-      <Container footer={<this.Footer />} position>
+      <Container footer={<this.Footer />} position isFooter>
         <HeaderAuth title="Account Configuration"/>
         <HeaderAuth subTitle="Please Enter The Required Data (*)" />
         <View style={{justifyContent: 'center', alignItems: 'center', overflow: 'hidden'}}>

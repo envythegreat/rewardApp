@@ -35,7 +35,7 @@ class Register extends Component<RegisterProps, RegisterState>{
   }
   render(){
     return (
-      <Container footer={<ContainerFooter label="Already have an account?" btn=" Login here" naviga="Login" />}>
+      <Container footer={<ContainerFooter label="Already have an account?" btn=" Login here" naviga="Login" />} isFooter>
         <HeaderAuth  title="Create account" subTitle="Let’s us know what your name, email, and your password" />
         <View style={{justifyContent: 'center', alignItems: 'center', overflow: 'hidden'}}>
           <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" handleState={this.handleState} />

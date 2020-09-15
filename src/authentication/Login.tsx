@@ -39,7 +39,7 @@ class Login extends Component<LoginProps, LoginState>{
   render(){
     // const navigation =useNavigation();
     return (
-      <Container footer={<ContainerFooter label="Don’t have an account?" btn=" Sign Up here" naviga="Register" />} position>
+      <Container footer={<ContainerFooter label="Don’t have an account?" btn=" Sign Up here" naviga="Register" />} position isFooter>
         <HeaderAuth title="Welcome back" subTitle="Use your credentials below and login to your account" />
         <View style={{justifyContent: 'center', alignItems: 'center', overflow: 'hidden'}}>
           <TextInput iconName="mail" placeholder="Enter your Email" refs="Email" keyboardType="email-address" handleState={this.handleState} />

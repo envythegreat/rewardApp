@@ -16,7 +16,7 @@ const footer  = (
 )
 const ForgotPassword = (_props: ForgotPasswordProps) => {
   return (
-    <Container footer={footer} position>
+    <Container footer={footer} position isFooter>
       {/* <View style={styles.checkImg}>
         <Image source={require('../../assets/img/Bigmark.png')}/>
       </View>

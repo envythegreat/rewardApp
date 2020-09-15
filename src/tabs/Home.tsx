@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import HeaderAuth from '../component/HeaderAuth';
+// import Container from '../component/Container';
+// import { Shape2 } from '../component/icons/Shapes';
+// import HeaderAuth from '../component/HeaderAuth';
+import SplashSVG from '../component/icons/splash';
 
 interface HomeProps {}
-
+const size = 250;
 const Home = (_props: HomeProps) => {
   return (
-    <View>
-      <HeaderAuth title="Account Configuration"/>
-      <HeaderAuth subTitle="Please Enter The Required Data (*)" />
+    <View style={styles.Bigcontainer}>
+      <View style={styles.container}>
+        <SplashSVG />
+      </View>
     </View>
   );
 };
@@ -16,5 +20,17 @@ const Home = (_props: HomeProps) => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {
+    width: size,
+    height: size,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    transform: [{ rotate: "180deg" }],
+  },
+  Bigcontainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });

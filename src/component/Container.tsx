@@ -5,8 +5,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 interface ContainerProps {
   children: ReactNode;
-  footer: ReactNode;
+  footer?: ReactNode;
   position?: boolean;
+  isFooter?: boolean;
 }
 
 const {width} = Dimensions.get('window')
@@ -14,7 +15,7 @@ const aspectRatio = 750 / 1125
 const wheight = width * aspectRatio
 const {height} = Dimensions.get('window')
 
-const Container = ({children, footer, position}: ContainerProps) => {
+const Container = ({children, footer, position, isFooter}: ContainerProps) => {
   const bottomBorderData = position ? {borderBottomLeftRadius: 75} :  {borderBottomRightRadius: 75};
   const topBorderData = position ? {borderTopLeftRadius: 0} : {borderTopRightRadius: 0}
   const insets = useSafeAreaInsets();
@@ -42,15 +43,25 @@ const Container = ({children, footer, position}: ContainerProps) => {
             }}
         />
         
-        <View style={[styles.boxOverllay, topBorderData]}>
+        <View style={[
+                        styles.boxOverllay,
+                        topBorderData,
+                        {
+                          borderBottomLeftRadius: !isFooter ? 0 : 75,
+                          borderBottomRightRadius: !isFooter ? 0 : 75
+                        }
+                      ]
+                    }>
           
             {children}
         </View>
       </View>
-      <View style={styles.footerContainer} >
+      {isFooter ? (
+        <View style={styles.footerContainer} >
         {footer}
         <View  style={{height: insets.bottom}} />
       </View>
+      ): null}
     </View>
     </KeyboardAwareScrollView>
     </>
