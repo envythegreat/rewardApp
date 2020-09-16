@@ -1,4 +1,5 @@
 import React from "react"
+import { View, StyleSheet } from "react-native";
 import Svg, { Path } from 'react-native-svg';
 
 export function Shape1() {
@@ -48,3 +49,25 @@ export function Shape4() {
 }
 
 
+export function Allshapes() {
+  return(
+    <View style={styles.container}>
+      <View style={{margin:2.5,marginLeft:-1}}><Shape2 /></View>
+      <View style={{margin:2}}><Shape1 /></View>
+      <View style={{margin:2}}><Shape3 /></View>
+      <View style={{margin:2}}><Shape4 /></View>
+    </View>
+  );
+}
+const size = 250;
+const styles = StyleSheet.create({
+  container: {
+    width: size,
+    height: size,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 10
+  },
+});

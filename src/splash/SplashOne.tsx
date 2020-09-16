@@ -8,8 +8,8 @@ import { Allshapes,} from '../component/icons/Shapes';
 // import HeaderAuth from '../component/HeaderAuth';
 // import SplashSVG from '../component/icons/splash';
 
-interface HomeProps {}
-const Home = (_props: HomeProps) => {
+interface SplashProps {}
+const Splash = (_props: SplashProps) => {
   const spinValue = new Animated.Value(0)
 
 // First set up animation 
@@ -44,7 +44,7 @@ const spin = spinValue.interpolate({
   );
 };
 
-export default Home;
+export default Splash;
 
 const styles = StyleSheet.create({
   Bigcontainer: {
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
   },
   txt:{
     fontSize: 40,
-    fontFamily: 'BalooTamma2'
+
   }
 });
