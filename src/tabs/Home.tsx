@@ -12,8 +12,7 @@ import {
 } from 'native-base';
 import HeaderSVG from '../component/icons/HeaderSVG';
 import {AdMobBanner} from 'expo-ads-admob'
-import RewardAds from '../component/rewardAds'
-import InterstitialAd from '../component/InterstitialAd';
+import AdmobAds from '../component/admobAds'
 import HeaderAuth from '../component/HeaderAuth';
 
 
@@ -58,8 +57,8 @@ class Home extends Component<HomeProps>{
         </View>
         <Content>
           <HeaderAuth title="Get Point by watching ads" marginT={5} />
-          <RewardAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9586882309' : 'ca-app-pub-5479742637870614/9447281504'} />
-          <InterstitialAd />
+          <AdmobAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9586882309' : 'ca-app-pub-5479742637870614/9447281504'}  adType="AdMobRewarded" />
+          <AdmobAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9828563065' : 'ca-app-pub-5479742637870614/9445419686'}  adType="AdMobInterstitial" />
         </Content>
       </Container>
     );

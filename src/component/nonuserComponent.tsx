@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import { Platform, View, StyleSheet } from 'react-native';
 import { AdMobInterstitial } from 'expo-ads-admob';
 import { Text, Right, Button } from "native-base";
-
-// ios id ca-app-pub-5479742637870614~9285869090
-// reward id ca-app-pub-5479742637870614/9586882309
-
-// android id ca-app-pub-5479742637870614~5673092993
-// reward id ca-app-pub-5479742637870614/9447281504
 interface InterstitialAdState{
   loadAds: boolean;
   rewardId : string;
