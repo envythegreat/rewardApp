@@ -28,10 +28,9 @@ class Home extends Component<HomeProps>{
   }
 
   async componentDidMount() {
-    AdMobInterstitial.setAdUnitID(this.AdMobInterstitialAdId);
+    await AdMobInterstitial.setAdUnitID(this.AdMobInterstitialAdId);
     await AdMobInterstitial.requestAdAsync({servePersonalizedAds: true});
     await AdMobInterstitial.showAdAsync();
-    console.log(AdMobInterstitial)
   }
   render(){
     return (

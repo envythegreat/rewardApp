@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useSafeAreaInsets  } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets  } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AnimatedTabBar, {
   TabsConfig,
@@ -11,6 +11,7 @@ import { MainTabsParams } from '../authentication/Routes';
 import Home from './Home'
 import Settings from './Settings'
 import Tabbar from './Tabbar'
+import { Platform } from 'react-native';
 const Tab = createBottomTabNavigator<MainTabsParams>();
 
 const tabs: TabsConfig<FlashyTabBarItemConfig, MainTabsParams> = {
@@ -96,6 +97,7 @@ const FlashyStyledScreen = () => {
 
   // render
   return (
+    <SafeAreaProvider style={{marginBottom: Platform.OS === 'ios'? 1 : 10}}>
     <Tab.Navigator
       tabBarOptions={tabBarOptions}
       tabBar={props => (
@@ -137,6 +139,7 @@ const FlashyStyledScreen = () => {
         component={Tabbar}
       />
     </Tab.Navigator>
+    </SafeAreaProvider>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, StyleSheet, Image, Dimensions, StatusBar } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, StatusBar, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -59,7 +59,7 @@ const Container = ({children, footer, position, isFooter}: ContainerProps) => {
       {isFooter ? (
         <View style={styles.footerContainer} >
         {footer}
-        <View  style={{height: insets.bottom}} />
+        <View  style={{height: Platform.OS === 'ios'? insets.bottom : insets.bottom + 25}} />
       </View>
       ): null}
     </View>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   footerContainer:{
-    // height: 200,
+    // height: Platform.OS === 'ios' ? 0 : 90,
     backgroundColor: "#000",
     paddingTop: 20,
     alignItems: 'center',
