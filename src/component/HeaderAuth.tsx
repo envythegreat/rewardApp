@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Text, StyleSheet, StyleProp, ViewStyle, View } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
 interface headerAuthProps {
   title?:string;
   subTitle?: string
-  labelStyle?: StyleProp<ViewStyle>;
+  marginT?: number;
 }
 
-const HeaderAuth = ({title,subTitle}: headerAuthProps) => {
+const HeaderAuth = ({title,subTitle,marginT}: headerAuthProps) => {
   return (
     <>
       <View>
-        {title? <Text style={styles.Title}>{title}</Text> : null}
+        {title? <Text style={[styles.Title, {marginTop: marginT ? marginT : 58}]}>{title}</Text> : null}
         {subTitle ? <Text style={styles.subTitle}>{subTitle}</Text> : null}
       </View>
     </>
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     marginVertical: 26,
     lineHeight: 33,
     color: '#0C0D34',
-    marginTop: 58
   },
   subTitle: {
     fontSize: 16,

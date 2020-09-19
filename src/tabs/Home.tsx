@@ -11,26 +11,27 @@ import {
   Content
 } from 'native-base';
 import HeaderSVG from '../component/icons/HeaderSVG';
-import {AdMobInterstitial, AdMobBanner} from 'expo-ads-admob'
+import {AdMobBanner} from 'expo-ads-admob'
+import RewardAds from '../component/rewardAds'
+import InterstitialAd from '../component/InterstitialAd';
+import HeaderAuth from '../component/HeaderAuth';
+
+
+
 
 interface HomeProps {}
 class Home extends Component<HomeProps>{
   BannerAdId: string;
-  AdMobInterstitialAdId: string;
   constructor(props : Readonly<HomeProps>) {
     super(props)
     this.BannerAdId = Platform.OS === 'ios'
                                     ? "ca-app-pub-5479742637870614/9709568594"
                                     : "ca-app-pub-5479742637870614/8752366680"
-    this.AdMobInterstitialAdId = Platform.OS === 'ios'
-                                    ? "ca-app-pub-5479742637870614~9285869090"
-                                    : "ca-app-pub-5479742637870614~5673092993"
   }
 
   async componentDidMount() {
-    await AdMobInterstitial.setAdUnitID(this.AdMobInterstitialAdId);
-    await AdMobInterstitial.requestAdAsync({servePersonalizedAds: true});
-    await AdMobInterstitial.showAdAsync();
+    // await AdMobInterstitial.setAdUnitID(this.AdMobInterstitialAdId);
+
   }
   render(){
     return (
@@ -48,14 +49,17 @@ class Home extends Component<HomeProps>{
             </Badge>
           </Right>
         </Header>
+        <View style={styles.Bigcontainer}>
+          <AdMobBanner
+            bannerSize="fullBanner"
+            adUnitID={this.BannerAdId}
+            servePersonalizedAds={true}  
+          />
+        </View>
         <Content>
-          <View style={styles.Bigcontainer}>
-            <AdMobBanner
-              bannerSize="fullBanner"
-              adUnitID={this.BannerAdId}
-              servePersonalizedAds={true}  
-            />
-          </View>
+          <HeaderAuth title="Get Point by watching ads" marginT={5} />
+          <RewardAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9586882309' : 'ca-app-pub-5479742637870614/9447281504'} />
+          <InterstitialAd />
         </Content>
       </Container>
     );
@@ -66,9 +70,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   Bigcontainer: {
-    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
   },
 });
