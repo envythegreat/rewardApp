@@ -67,9 +67,9 @@ class AdmobAds extends Component<RewardProps, RewardadsState>{
           <Button rounded
             onPress={this._handlePress}
             disabled={!loadAds}
-            style={styles.btn}
+            style={loadAds ? styles.btn : [styles.btn, {borderColor: '#000',borderWidth: 1,backgroundColor: 'transparent'}]}
           >
-            <Text>Go</Text>
+            <Text style={loadAds ? {color: '#fff'} : {color: '#000'}}>Go</Text>
           </Button>
         </Right>
       </View>
@@ -81,12 +81,13 @@ export default AdmobAds;
 const styles = StyleSheet.create({
   Btnreward:{
     flexDirection: 'row',
-    // borderColor: '#000',
+    borderColor: '#000',
     // borderWidth: 2,
     height: 60,
     justifyContent: 'center',
     alignContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 1
   },
   Textreward:{
     fontSize: 15,
@@ -95,6 +96,10 @@ const styles = StyleSheet.create({
     fontFamily: 'RussoOn'
   },
   btn:{
-    marginRight: 20
+    marginRight: 20,
+    padding: 20,
+    backgroundColor: '#2CB9B0',
+    // borderColor: '#000',
+    // borderWidth: 1
   }
 })

@@ -8,7 +8,7 @@ import {
   Text,
   Badge,
   View,
-  Content
+  Content, List
 } from 'native-base';
 import HeaderSVG from '../component/icons/HeaderSVG';
 import {AdMobBanner} from 'expo-ads-admob'
@@ -34,7 +34,7 @@ class Home extends Component<HomeProps>{
   }
   render(){
     return (
-      <Container>
+      <Container style={{backgroundColor: '#fff'}}>
         <Header transparent>
           <Left>
             <View>
@@ -56,9 +56,17 @@ class Home extends Component<HomeProps>{
           />
         </View>
         <Content>
-          <HeaderAuth title="Get Point by watching ads" marginT={5} />
-          <AdmobAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9586882309' : 'ca-app-pub-5479742637870614/9447281504'}  adType="AdMobRewarded" />
-          <AdmobAds AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9828563065' : 'ca-app-pub-5479742637870614/9445419686'}  adType="AdMobInterstitial" />
+          <HeaderAuth title="Watch Ads" marginT={2} subTitle="And Get Paid" />
+          <List>
+            <AdmobAds 
+                AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/6855518005' : 'ca-app-pub-5479742637870614/9447281504'}
+                adType="AdMobRewarded" 
+            />
+            <AdmobAds
+                AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9828563065' : 'ca-app-pub-5479742637870614/9445419686'} 
+                adType="AdMobInterstitial"
+            />
+          </List>
         </Content>
       </Container>
     );
@@ -71,5 +79,6 @@ const styles = StyleSheet.create({
   Bigcontainer: {
     backgroundColor: "#fff",
     alignItems: "center",
+
   },
 });
