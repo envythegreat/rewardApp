@@ -14,6 +14,7 @@ import HeaderSVG from '../component/icons/HeaderSVG';
 import {AdMobBanner} from 'expo-ads-admob'
 import AdmobAds from '../component/admobAds'
 import HeaderAuth from '../component/HeaderAuth';
+import ShowAds from '../component/showAds';
 
 
 
@@ -66,7 +67,9 @@ class Home extends Component<HomeProps>{
                 AdId={Platform.OS === 'ios' ? 'ca-app-pub-5479742637870614/9828563065' : 'ca-app-pub-5479742637870614/9445419686'} 
                 adType="AdMobInterstitial"
             />
+            <ShowAds />
           </List>
+          
         </Content>
       </Container>
     );

@@ -5,13 +5,14 @@ interface headerAuthProps {
   title?:string;
   subTitle?: string
   marginT?: number;
+  color?: string
 }
 
-const HeaderAuth = ({title,subTitle,marginT}: headerAuthProps) => {
+const HeaderAuth = ({title,subTitle,marginT, color}: headerAuthProps) => {
   return (
     <>
       <View>
-        {title? <Text style={[styles.Title, {marginTop: marginT ? marginT : 58}]}>{title}</Text> : null}
+        {title? <Text style={[styles.Title, {marginTop: marginT ? marginT : 58},{color}]}>{title}</Text> : null}
         {subTitle ? <Text style={styles.subTitle}>{subTitle}</Text> : null}
       </View>
     </>
