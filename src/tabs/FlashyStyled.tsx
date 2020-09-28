@@ -121,15 +121,6 @@ const FlashyStyledScreen = () => {
         component={Home}
       />
       <Tab.Screen
-        name="Settings"
-        initialParams={{
-          backgroundColor: '#000',
-          nextScreen: 'Tabbar',
-          paddingBottom: screenPaddingBottom,
-        }}
-        component={Settings}
-      />
-      <Tab.Screen
         name="Tabbar"
         initialParams={{
           backgroundColor: '#000',
@@ -137,6 +128,15 @@ const FlashyStyledScreen = () => {
           paddingBottom: screenPaddingBottom,
         }}
         component={Tabbar}
+      />
+      <Tab.Screen
+        name="Settings"
+        initialParams={{
+          backgroundColor: '#000',
+          nextScreen: 'Tabbar',
+          paddingBottom: screenPaddingBottom,
+        }}
+        component={Settings}
       />
     </Tab.Navigator>
     </SafeAreaProvider>

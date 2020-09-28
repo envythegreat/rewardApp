@@ -1,78 +1,14 @@
 import { Accordion, Icon } from 'native-base';
-import * as React from 'react';
-import { Text, View, StyleSheet, StatusBar} from 'react-native';
+import React, {Component} from 'react';
+import { Text, View, StyleSheet, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import { dataArray } from '../authentication/settingsData';
 import HeaderAuth from '../component/HeaderAuth';
 import TextInput from '../component/TextInput';
 // import ShowAds from '../component/showAds';
 
 // interface SettingsProps {}
-const dataArray = [
-  { title: "Profile Information", 
-    content: [
-      {
-        iconName:'mail',
-        placeholder: 'Email Address',
-        refs:'Email',
-        keyboardType: 'email-address',
-        handleState: () => console.log('gg')
-      },
-      {
-        iconName:'user',
-        placeholder: 'Full Name',
-        refs:'FullName',
-        keyboardType: 'default',
-        handleState: () => console.log('gg')
-      },
-      {
-        iconName:'map-pin',
-        placeholder: 'Street Address',
-        refs:'Address',
-        keyboardType: 'default',
-        handleState: () => console.log('gg')
-      }
-    ]
-  },
-  { title: "Security", 
-    content:[
-      {
-        iconName:'lock',
-        placeholder: 'Old Password',
-        refs:'OldPassword',
-        textEntry: true,
-        keyboardType: 'default',
-        handleState: () => console.log('gg')
-      },
-      {
-        iconName:'lock',
-        placeholder: 'New Password',
-        refs:'NewPassword',
-        textEntry: true,
-        keyboardType: 'default',
-        handleState: () => console.log('gg')
-      },
-      {
-        iconName:'lock',
-        placeholder: 'Confirm New Password',
-        refs:'CNewPassword',
-        textEntry: true,
-        keyboardType: 'default',
-        handleState: () => console.log('gg')
-      }
-    ]
-  },
-  { title: "Payout Settings", 
-    content:[
-      {
-        iconName:'mail',
-        placeholder: 'Paypal Email',
-        refs:'Email',
-        keyboardType: 'email-address',
-        handleState: () => console.log('gg')
-      }
-    ]
-  },
-];
-class Settings extends React.Component{
+ const {width} = Dimensions.get('window')
+class Settings extends Component{
   _renderHeader(item: { title: React.ReactNode; }, expanded: any) {
     return (
       <View style={{
@@ -93,7 +29,7 @@ class Settings extends React.Component{
     );
   }
   _renderContent(item: any) {
-    console.log(item.content.length)
+    // console.log(item)
     return (
       <View style={{alignItems: 'center'}}>
         {item.content.map((it: any) => <TextInput
@@ -105,6 +41,9 @@ class Settings extends React.Component{
           key={it.refs}
           textEntry={it.textEntry ? true : false}
         />)}
+        <TouchableOpacity style={styles.trchOpacity} onPress={item.button.onSubmitbtn}>
+          <Text style={{textAlign: 'center', color:'#FFFFFF',lineHeight: 50}}>{item.button.textInside}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -168,5 +107,15 @@ const styles = StyleSheet.create({
     fontSize:20,
     marginTop:20,
     textAlign: 'center'
-  }
+  },
+  trchOpacity:{
+    justifyContent: 'center',
+    backgroundColor: '#2CB9B0',
+    height: 50,
+    width: width / 2,
+    borderRadius: 50,
+    flexDirection: 'row',
+    marginVertical: 20,
+    
+  },
 });
