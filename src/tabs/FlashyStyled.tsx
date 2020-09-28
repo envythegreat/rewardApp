@@ -11,6 +11,7 @@ import { MainTabsParams } from '../authentication/Routes';
 import Home from './Home'
 import Settings from './Settings'
 import { Platform } from 'react-native';
+import Tabbar from './Tabbar';
 const Tab = createBottomTabNavigator<MainTabsParams>();
 
 const tabs: TabsConfig<FlashyTabBarItemConfig, MainTabsParams> = {
@@ -128,7 +129,7 @@ const FlashyStyledScreen = () => {
         }}
         component={Settings}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Tabbar"
         initialParams={{
           backgroundColor: '#000',
@@ -136,7 +137,7 @@ const FlashyStyledScreen = () => {
           paddingBottom: screenPaddingBottom,
         }}
         component={Tabbar}
-      /> */}
+      />
     </Tab.Navigator>
     </SafeAreaProvider>
   );
