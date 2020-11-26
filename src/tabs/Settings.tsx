@@ -6,9 +6,38 @@ import HeaderAuth from '../component/HeaderAuth';
 import TextInput from '../component/TextInput';
 // import ShowAds from '../component/showAds';
 
-// interface SettingsProps {}
+interface SettingsProps {
+  email: string;
+}
+interface SettingState {
+  FullName: string;
+  Email: string;
+  Address: string;
+  Password: string;
+  PayoutEmail: string;
+}
+
  const {width} = Dimensions.get('window')
-class Settings extends Component{
+class Settings extends Component<SettingsProps, SettingState>{
+
+  constructor(props : Readonly<SettingsProps>){
+    super(props)
+    this.state = {
+      FullName: '',
+      Email: '',
+      Address: '',
+      Password: '',
+      PayoutEmail: '',
+    }
+  }
+
+  handleState = (e: string, ref:string) => {
+    // @ts-ignore
+    this.setState({
+      [ref]: e,
+    })
+  }
+  
   _renderHeader(item: { title: React.ReactNode; }, expanded: any) {
     return (
       <View style={{
@@ -32,15 +61,19 @@ class Settings extends Component{
     // console.log(item)
     return (
       <View style={{alignItems: 'center'}}>
-        {item.content.map((it: any) => <TextInput
-          iconName={it.iconName}
-          placeholder={it.placeholder}
-          refs={it.refs}
-          keyboardType={it.keyboardType}
-          handleState={it.handleState}
-          key={it.refs}
-          textEntry={it.textEntry ? true : false}
-        />)}
+        {
+          item.content.map((it: any) =>
+            <TextInput
+              iconName={it.iconName}
+              placeholder={it.placeholder}
+              refs={it.refs}
+              keyboardType={it.keyboardType}
+              handleState={it.handleState}
+              key={it.refs}
+              textEntry={it.textEntry ? true : false}
+            />
+          )
+        }
         <TouchableOpacity style={styles.trchOpacity} onPress={item.button.onSubmitbtn}>
           <Text style={{textAlign: 'center', color:'#FFFFFF',lineHeight: 50}}>{item.button.textInside}</Text>
         </TouchableOpacity>

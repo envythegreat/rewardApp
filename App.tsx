@@ -30,7 +30,7 @@ class App extends Component<{},any>{
       DoHyeon: require('./assets/font/DoHyeon-Regular.ttf'),
       BalooTamma2: require('./assets/font/BalooTamma2-Medium.ttf'),
       OpenSans: require('./assets/font/SFProDisplay-Regular.ttf'),
-      
+      Roboto_medium: require('./assets/font/Roboto-Medium.ttf'),
     });
     this.setState({ loading: false });
   }
